@@ -3,668 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Club97Studio — High-End E-Commerce Photo Editing</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Club97Studio — E-Commerce Photo Editing Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0a0a0a;
-  --bg2: #111;
-  --bg3: #171717;
-  --red: #e74c3c;
-  --red2: #c0392b;
-  --white: #f5f5f5;
-  --gray: #888;
-  --gray2: #444;
-  --border: #1e1e1e;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-}
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#171717;--red:#e74c3c;--red2:#c0392b;--white:#f5f5f5;--gray:#888;--gray2:#444;--border:#1e1e1e;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
 
 /* NAV */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 20px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(10,10,10,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 0.5px solid var(--border);
-}
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 0.08em;
-  color: var(--white);
-}
-.nav-logo span { color: var(--red); }
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-.nav-links a {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-  text-decoration: none;
-  transition: color .2s;
-}
-.nav-links a:hover { color: var(--white); }
-.nav-cta {
-  background: var(--red) !important;
-  color: #fff !important;
-  padding: 8px 18px;
-  border-radius: 4px;
-}
-.nav-cta:hover { background: var(--red2) !important; }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.88);backdrop-filter:blur(12px);border-bottom:.5px solid var(--border);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--red)!important;color:#fff!important;padding:8px 18px;border-radius:4px;}
+.nav-cta:hover{background:var(--red2)!important;}
 
 /* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 48px 80px;
-  position: relative;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(231,76,60,0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(231,76,60,0.04) 0%, transparent 60%);
-}
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-}
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: var(--red);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-  animation: fadeUp .6s ease both;
-}
-.hero-tag::before {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: var(--red);
-}
-.hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(52px, 8vw, 96px);
-  line-height: 0.92;
-  letter-spacing: 0.02em;
-  color: var(--white);
-  margin-bottom: 28px;
-  animation: fadeUp .6s .1s ease both;
-}
-.hero-title .accent { color: var(--red); }
-.hero-title .outline {
-  -webkit-text-stroke: 1px rgba(255,255,255,0.3);
-  color: transparent;
-}
-.hero-desc {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--gray);
-  line-height: 1.7;
-  max-width: 480px;
-  margin-bottom: 40px;
-  animation: fadeUp .6s .2s ease both;
-}
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-  animation: fadeUp .6s .3s ease both;
-}
-.btn-primary {
-  background: var(--red);
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background .2s, transform .15s;
-  display: inline-block;
-}
-.btn-primary:hover { background: var(--red2); transform: translateY(-1px); }
-.btn-ghost {
-  color: var(--gray);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: color .2s;
-}
-.btn-ghost:hover { color: var(--white); }
-.hero-stats {
-  position: absolute;
-  right: 48px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  z-index: 2;
-  animation: fadeUp .6s .4s ease both;
-}
-.stat-item {
-  text-align: right;
-  border-right: 2px solid var(--red);
-  padding-right: 20px;
-}
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 42px;
-  color: var(--white);
-  letter-spacing: 0.04em;
-  line-height: 1;
-}
-.stat-label {
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-top: 2px;
-}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(231,76,60,.08) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(231,76,60,.04) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:.15em;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .6s ease both;}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--red);}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8vw,96px);line-height:.92;letter-spacing:.02em;margin-bottom:28px;animation:fadeUp .6s .1s ease both;}
+.hero-title .accent{color:var(--red);}
+.hero-title .outline{-webkit-text-stroke:1px rgba(255,255,255,.3);color:transparent;}
+.hero-desc{font-size:15px;font-weight:300;color:var(--gray);line-height:1.7;max-width:480px;margin-bottom:40px;animation:fadeUp .6s .2s ease both;}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;animation:fadeUp .6s .3s ease both;}
+.btn-primary{background:var(--red);color:#fff;padding:14px 28px;border-radius:4px;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;display:inline-block;}
+.btn-primary:hover{background:var(--red2);transform:translateY(-1px);}
+.btn-ghost{color:var(--gray);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .2s;}
+.btn-ghost:hover{color:var(--white);}
+.hero-stats{position:absolute;right:48px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:24px;z-index:2;animation:fadeUp .6s .4s ease both;}
+.stat-item{text-align:right;border-right:2px solid var(--red);padding-right:20px;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--white);letter-spacing:.04em;line-height:1;}
+.stat-label{font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-top:2px;}
 
 /* MARQUEE */
-.marquee-wrap {
-  border-top: 0.5px solid var(--border);
-  border-bottom: 0.5px solid var(--border);
-  background: var(--bg2);
-  padding: 14px 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.marquee-track {
-  display: inline-flex;
-  animation: marquee 24s linear infinite;
-}
-.marquee-item {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gray2);
-  padding: 0 32px;
-}
-.marquee-item span { color: var(--red); margin-right: 32px; }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
+.marquee-wrap{border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);background:var(--bg2);padding:14px 0;overflow:hidden;white-space:nowrap;}
+.marquee-track{display:inline-flex;animation:marquee 24s linear infinite;}
+.marquee-item{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gray2);padding:0 32px;}
+.marquee-item span{color:var(--red);margin-right:32px;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-/* SECTIONS */
-section { padding: 96px 48px; }
-.section-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: var(--red);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.section-tag::before { content: '//'; opacity: 0.5; }
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(36px, 5vw, 64px);
-  letter-spacing: 0.03em;
-  color: var(--white);
-  line-height: 1;
-  margin-bottom: 48px;
-}
+/* SHARED */
+section{padding:96px 48px;}
+.section-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.section-tag::before{content:'//';opacity:.5;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:.03em;line-height:1;margin-bottom:48px;}
 
 /* SERVICES */
-.services { background: var(--bg); }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 0.5px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.service-card {
-  background: var(--bg2);
-  padding: 36px 32px;
-  transition: background .2s;
-  position: relative;
-  overflow: hidden;
-}
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--red);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .3s;
-}
-.service-card:hover { background: var(--bg3); }
-.service-card:hover::before { transform: scaleX(1); }
-.service-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 64px;
-  color: rgba(255,255,255,0.04);
-  line-height: 1;
-  position: absolute;
-  top: 16px; right: 20px;
-  letter-spacing: 0;
-}
-.service-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: rgba(231,76,60,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-.service-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-.service-desc {
-  font-size: 13px;
-  color: var(--gray);
-  line-height: 1.65;
-  margin-bottom: 20px;
-}
-.service-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.service-list li {
-  font-size: 11px;
-  color: var(--gray);
-  padding-left: 14px;
-  position: relative;
-  line-height: 1.5;
-}
-.service-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--red);
-  font-size: 10px;
-}
+.services{background:var(--bg);}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:.5px solid var(--border);border-radius:12px;overflow:hidden;}
+.service-card{background:var(--bg2);padding:36px 32px;transition:background .2s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.service-card:hover{background:var(--bg3);}
+.service-card:hover::before{transform:scaleX(1);}
+.service-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:rgba(255,255,255,.04);line-height:1;position:absolute;top:16px;right:20px;}
+.service-icon{width:36px;height:36px;border-radius:8px;background:rgba(231,76,60,.12);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:16px;}
+.service-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.04em;margin-bottom:12px;}
+.service-desc{font-size:13px;color:var(--gray);line-height:1.65;margin-bottom:20px;}
+.service-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.service-list li{font-size:11px;color:var(--gray);padding-left:14px;position:relative;line-height:1.5;}
+.service-list li::before{content:'—';position:absolute;left:0;color:var(--red);font-size:10px;}
+
+/* NICHES */
+.niche-strip{background:var(--bg2);padding:64px 48px;}
+.niche-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.niche-card{background:var(--bg);border:.5px solid var(--border);border-radius:10px;padding:28px 24px;transition:border-color .2s,background .2s;}
+.niche-card:hover{border-color:var(--red);background:var(--bg3);}
+.niche-emoji{font-size:28px;margin-bottom:14px;display:block;}
+.niche-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.04em;margin-bottom:10px;}
+.niche-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.niche-tag-pill{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:3px 7px;border-radius:3px;}
 
 /* PRICING */
-.pricing { background: var(--bg2); }
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  max-width: 900px;
-}
-.pricing-card {
-  background: var(--bg);
-  border: 0.5px solid var(--border);
-  border-radius: 10px;
-  padding: 32px;
-  position: relative;
-  transition: border-color .2s;
-}
-.pricing-card:hover { border-color: var(--gray2); }
-.pricing-card.featured {
-  border-color: var(--red);
-  background: linear-gradient(135deg, rgba(231,76,60,0.06) 0%, var(--bg) 60%);
-}
-.pricing-badge {
-  position: absolute;
-  top: -10px; right: 20px;
-  background: var(--red);
-  color: #fff;
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 3px;
-}
-.pricing-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-.pricing-best {
-  font-size: 10px;
-  color: var(--gray);
-  font-style: italic;
-  margin-bottom: 20px;
-}
-.pricing-price {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 44px;
-  color: var(--red);
-  letter-spacing: 0.02em;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.pricing-price sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--gray);
-  vertical-align: baseline;
-}
-.pricing-divider {
-  height: 0.5px;
-  background: var(--border);
-  margin: 20px 0;
-}
-.pricing-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.pricing-list li {
-  font-size: 12px;
-  color: var(--gray);
-  padding-left: 16px;
-  position: relative;
-  line-height: 1.5;
-}
-.pricing-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--red);
-  font-size: 10px;
-  font-weight: 700;
-}
-.pricing-cta {
-  display: block;
-  text-align: center;
-  margin-top: 24px;
-  padding: 11px;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all .2s;
-  border: 0.5px solid var(--gray2);
-  color: var(--gray);
-}
-.pricing-cta:hover { border-color: var(--red); color: var(--red); }
-.pricing-card.featured .pricing-cta {
-  background: var(--red);
-  border-color: var(--red);
-  color: #fff;
-}
-.pricing-card.featured .pricing-cta:hover { background: var(--red2); }
+.pricing{background:var(--bg);}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.pricing-card{background:var(--bg2);border:.5px solid var(--border);border-radius:10px;padding:32px;position:relative;transition:border-color .2s;}
+.pricing-card:hover{border-color:var(--gray2);}
+.pricing-card.featured{border-color:var(--red);background:linear-gradient(135deg,rgba(231,76,60,.06) 0%,var(--bg2) 60%);}
+.pricing-badge{position:absolute;top:-10px;right:20px;background:var(--red);color:#fff;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:3px;}
+.pricing-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.04em;margin-bottom:4px;}
+.pricing-best{font-size:10px;color:var(--gray);font-style:italic;margin-bottom:20px;}
+.pricing-price{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--red);letter-spacing:.02em;line-height:1;margin-bottom:4px;}
+.pricing-price sub{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--gray);vertical-align:baseline;}
+.pricing-divider{height:.5px;background:var(--border);margin:20px 0;}
+.pricing-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.pricing-list li{font-size:12px;color:var(--gray);padding-left:16px;position:relative;line-height:1.5;}
+.pricing-list li::before{content:'✓';position:absolute;left:0;color:var(--red);font-size:10px;font-weight:700;}
+.pricing-cta{display:block;text-align:center;margin-top:24px;padding:11px;border-radius:4px;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .2s;border:.5px solid var(--gray2);color:var(--gray);}
+.pricing-cta:hover{border-color:var(--red);color:var(--red);}
+.pricing-card.featured .pricing-cta{background:var(--red);border-color:var(--red);color:#fff;}
+.pricing-card.featured .pricing-cta:hover{background:var(--red2);}
 
 /* WORKFLOW */
-.workflow { background: var(--bg); }
-.workflow-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
-}
-.workflow-steps::before {
-  content: '';
-  position: absolute;
-  top: 24px;
-  left: 12%;
-  right: 12%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--red), transparent);
-}
-.workflow-step {
-  padding: 0 24px;
-  text-align: center;
-}
-.step-num {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--bg2);
-  border: 1px solid var(--red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  color: var(--red);
-  position: relative;
-  z-index: 2;
-}
-.step-title {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-.step-desc {
-  font-size: 11px;
-  color: var(--gray);
-  line-height: 1.6;
-}
+.workflow{background:var(--bg2);}
+.workflow-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;}
+.workflow-steps::before{content:'';position:absolute;top:24px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);}
+.workflow-step{padding:0 24px;text-align:center;}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--bg);border:1px solid var(--red);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--red);position:relative;z-index:2;}
+.step-title{font-size:13px;font-weight:500;margin-bottom:8px;}
+.step-desc{font-size:11px;color:var(--gray);line-height:1.6;}
 
 /* ABOUT */
-.about {
-  background: var(--bg2);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.about-text .section-title { margin-bottom: 20px; }
-.about-desc {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 1.8;
-  margin-bottom: 24px;
-}
-.about-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-.about-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  border: 0.5px solid var(--border);
-  padding: 6px 12px;
-  border-radius: 4px;
-}
-.about-right {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.about-stat {
-  background: var(--bg);
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
-  padding: 24px 20px;
-  transition: border-color .2s;
-}
-.about-stat:hover { border-color: var(--red); }
-.about-stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 44px;
-  color: var(--red);
-  letter-spacing: 0.04em;
-  line-height: 1;
-}
-.about-stat-label {
-  font-size: 11px;
-  color: var(--gray);
-  margin-top: 4px;
-  line-height: 1.4;
-}
+.about{background:var(--bg);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-text .section-title{margin-bottom:20px;}
+.about-desc{font-size:14px;color:var(--gray);line-height:1.8;margin-bottom:24px;}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.about-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:6px 12px;border-radius:4px;}
+.about-right{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.about-stat{background:var(--bg2);border:.5px solid var(--border);border-radius:8px;padding:24px 20px;transition:border-color .2s;}
+.about-stat:hover{border-color:var(--red);}
+.about-stat-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--red);line-height:1;}
+.about-stat-label{font-size:11px;color:var(--gray);margin-top:4px;line-height:1.4;}
 
 /* CTA */
-.cta-section {
-  background: var(--bg);
-  text-align: center;
-  padding: 120px 48px;
-  position: relative;
-  overflow: hidden;
-}
-.cta-section::before {
-  content: 'CLUB97';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 200px;
-  color: rgba(255,255,255,0.02);
-  white-space: nowrap;
-  letter-spacing: 0.1em;
-  pointer-events: none;
-}
-.cta-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(36px, 5vw, 64px);
-  letter-spacing: 0.03em;
-  margin-bottom: 16px;
-  position: relative;
-}
-.cta-desc {
-  font-size: 14px;
-  color: var(--gray);
-  margin-bottom: 24px;
-  position: relative;
-}
-.cta-email {
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  color: var(--red);
-  letter-spacing: 0.08em;
-  display: block;
-  margin-bottom: 36px;
-  position: relative;
-  text-decoration: none;
-}
-.cta-email:hover { text-decoration: underline; }
-.cta-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-}
+.cta-section{background:var(--bg2);text-align:center;padding:120px 48px;position:relative;overflow:hidden;}
+.cta-section::before{content:'CLUB97';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:180px;color:rgba(255,255,255,.02);white-space:nowrap;pointer-events:none;}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:.03em;margin-bottom:16px;position:relative;}
+.cta-desc{font-size:14px;color:var(--gray);margin-bottom:24px;position:relative;}
+.cta-email{font-family:'DM Mono',monospace;font-size:13px;color:var(--red);letter-spacing:.08em;display:block;margin-bottom:36px;position:relative;text-decoration:none;}
+.cta-email:hover{text-decoration:underline;}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;}
 
 /* FOOTER */
-footer {
-  background: var(--bg2);
-  border-top: 0.5px solid var(--border);
-  padding: 32px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
-  letter-spacing: 0.08em;
-}
-.footer-logo span { color: var(--red); }
-.footer-copy {
-  font-size: 11px;
-  color: var(--gray);
-}
-.footer-links {
-  display: flex;
-  gap: 24px;
-}
-.footer-links a {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  text-decoration: none;
-  transition: color .2s;
-}
-.footer-links a:hover { color: var(--white); }
+footer{background:var(--bg);border-top:.5px solid var(--border);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;}
+.footer-logo span{color:var(--red);}
+.footer-copy{font-size:11px;color:var(--gray);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--white);}
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .hero { padding: 100px 24px 60px; }
-  .hero-stats { display: none; }
-  section { padding: 64px 24px; }
-  .services-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
-  .workflow-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .workflow-steps::before { display: none; }
-  .about { grid-template-columns: 1fr; gap: 48px; }
-  footer { flex-direction: column; gap: 16px; text-align: center; }
+@media(max-width:768px){
+  nav{padding:16px 24px;}.nav-links{display:none;}
+  .hero{padding:100px 24px 60px;}.hero-stats{display:none;}
+  section{padding:64px 24px;}
+  .services-grid,.pricing-grid{grid-template-columns:1fr;}
+  .niche-grid{grid-template-columns:1fr 1fr;}
+  .workflow-steps{grid-template-columns:1fr 1fr;gap:32px;}.workflow-steps::before{display:none;}
+  .about{grid-template-columns:1fr;gap:48px;}
+  footer{flex-direction:column;gap:16px;text-align:center;}
+  .niche-strip{padding:48px 24px;}
 }
 </style>
 </head>
@@ -675,8 +161,8 @@ footer {
   <div class="nav-logo">Club<span>97</span>Studio</div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#niches">Niches</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#workflow">Workflow</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
   </ul>
@@ -687,54 +173,45 @@ footer {
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-tag">Premium E-Commerce Photo Editing</div>
+    <div class="hero-tag">E-Commerce Photo Editing Specialist</div>
     <h1 class="hero-title">
-      High-End<br>
-      <span class="accent">Editing</span><br>
-      <span class="outline">For Brands</span><br>
-      That Sell.
+      Clean.<br>
+      <span class="accent">Consistent.</span><br>
+      <span class="outline">Marketplace</span><br>
+      Ready.
     </h1>
-    <p class="hero-desc">8 years of precision retouching for fashion, jewelry, and automotive brands. Every image optimized for Amazon, Shopify, and global marketplaces.</p>
+    <p class="hero-desc">8 years editing product photos for fashion, apparel, jewelry, and automotive brands. High-volume delivery without sacrificing quality — every image marketplace-compliant.</p>
     <div class="hero-actions">
       <a href="#pricing" class="btn-primary">View Pricing</a>
       <a href="#services" class="btn-ghost">See Services →</a>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-num">8+</div>
-      <div class="stat-label">Years Experience</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">90%</div>
-      <div class="stat-label">Job Success</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">15+</div>
-      <div class="stat-label">Projects Done</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat-item"><div class="stat-num">90%</div><div class="stat-label">Job Success</div></div>
+    <div class="stat-item"><div class="stat-num">24H</div><div class="stat-label">Turnaround</div></div>
   </div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="marquee-item"><span>★</span> Fashion Retouching</span>
     <span class="marquee-item"><span>★</span> Ghost Mannequin</span>
-    <span class="marquee-item"><span>★</span> Jewelry Editing</span>
-    <span class="marquee-item"><span>★</span> Automotive Photos</span>
     <span class="marquee-item"><span>★</span> Background Removal</span>
+    <span class="marquee-item"><span>★</span> Apparel Retouching</span>
+    <span class="marquee-item"><span>★</span> Color Matching</span>
+    <span class="marquee-item"><span>★</span> Liquify & Texture</span>
     <span class="marquee-item"><span>★</span> Amazon Ready</span>
     <span class="marquee-item"><span>★</span> Shopify Optimized</span>
-    <span class="marquee-item"><span>★</span> 24H Turnaround</span>
-    <span class="marquee-item"><span>★</span> Fashion Retouching</span>
+    <span class="marquee-item"><span>★</span> Bulk Orders Welcome</span>
     <span class="marquee-item"><span>★</span> Ghost Mannequin</span>
-    <span class="marquee-item"><span>★</span> Jewelry Editing</span>
-    <span class="marquee-item"><span>★</span> Automotive Photos</span>
     <span class="marquee-item"><span>★</span> Background Removal</span>
+    <span class="marquee-item"><span>★</span> Apparel Retouching</span>
+    <span class="marquee-item"><span>★</span> Color Matching</span>
+    <span class="marquee-item"><span>★</span> Liquify & Texture</span>
     <span class="marquee-item"><span>★</span> Amazon Ready</span>
     <span class="marquee-item"><span>★</span> Shopify Optimized</span>
-    <span class="marquee-item"><span>★</span> 24H Turnaround</span>
+    <span class="marquee-item"><span>★</span> Bulk Orders Welcome</span>
   </div>
 </div>
 
@@ -745,42 +222,106 @@ footer {
   <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01</div>
-      <div class="service-icon">⚡</div>
-      <div class="service-title">E-Commerce Optimization</div>
-      <div class="service-desc">Clean, compliant, marketplace-ready images for Amazon, Shopify, and eBay. Built for high-volume sellers who need speed without sacrificing quality.</div>
+      <div class="service-icon">👕</div>
+      <div class="service-title">Apparel & Fashion Editing</div>
+      <div class="service-desc">Specialized editing for clothing, footwear, and accessories. We preserve fabric texture while delivering clean, marketplace-ready results at volume.</div>
       <ul class="service-list">
-        <li>Precision Clipping Path & Background Removal</li>
-        <li>Advanced Ghost Mannequin / Neck Joint</li>
-        <li>Shadow & Reflection Creation</li>
-        <li>Image Resizing & Margin Alignment</li>
+        <li>Ghost Mannequin / Neck Joint Effect</li>
+        <li>Dust & Scratch Removal</li>
+        <li>Liquify & Shape Refinement</li>
+        <li>Fabric Texture Preservation</li>
+        <li>Color Matching across catalog</li>
+        <li>Wrinkle Reduction</li>
       </ul>
     </div>
     <div class="service-card">
       <div class="service-num">02</div>
-      <div class="service-icon">💎</div>
-      <div class="service-title">High-End Retouching</div>
-      <div class="service-desc">Detailed retouching for jewelry, watches, luxury goods, and hero images. Every pixel refined — natural textures preserved, flaws eliminated.</div>
+      <div class="service-icon">👤</div>
+      <div class="service-title">Fashion Model Retouching</div>
+      <div class="service-desc">Clean, natural model retouching focused on removing distractions. Product stays the hero, model looks polished — not over-processed.</div>
       <ul class="service-list">
-        <li>Advanced Color Matching & Correction</li>
-        <li>Texture & Fabric Enhancement</li>
-        <li>Metal & Jewelry Polishing</li>
-        <li>Advanced Model & Portrait Retouching</li>
+        <li>Blemish & Bruise Removal</li>
+        <li>Mole & Minor Skin Cleanup</li>
+        <li>Wrinkle Reduction on Clothing</li>
+        <li>Resize & Crop to Platform Spec</li>
+        <li>Consistent Output Across Sets</li>
       </ul>
     </div>
     <div class="service-card">
       <div class="service-num">03</div>
-      <div class="service-icon">🎨</div>
-      <div class="service-title">AI Compositing</div>
-      <div class="service-desc">Studio shots transformed into lifestyle scenes that drive conversion. For social media ads, website banners, and campaign imagery.</div>
+      <div class="service-icon">💍</div>
+      <div class="service-title">Jewelry Cleanup</div>
+      <div class="service-desc">Clean white background and standard retouching for jewelry listings. Every piece delivered scratch-free and marketplace compliant.</div>
       <ul class="service-list">
-        <li>AI-Powered Background Replacement</li>
-        <li>Advanced Image Manipulation</li>
-        <li>Mood & Atmosphere Grading</li>
-        <li>Creative Assets for Marketing</li>
+        <li>Background Removal (Pure White)</li>
+        <li>Dust & Scratch Removal</li>
+        <li>Standard Product Cleanup</li>
+        <li>Amazon & Shopify Spec Compliance</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">🔧</div>
+      <div class="service-title">Automotive Parts Editing</div>
+      <div class="service-desc">Fast, clean editing for automotive parts and accessories. Background removal, resizing, and cropping at scale for marketplace listings.</div>
+      <ul class="service-list">
+        <li>Background Removal</li>
+        <li>Resize & Crop to Platform Spec</li>
+        <li>Consistent Bulk Catalog Output</li>
+        <li>Amazon & eBay Ready</li>
       </ul>
     </div>
   </div>
 </section>
+
+<!-- NICHES -->
+<div class="niche-strip" id="niches">
+  <div class="section-tag">Specializations</div>
+  <div class="section-title">What We Edit</div>
+  <div class="niche-grid">
+    <div class="niche-card">
+      <span class="niche-emoji">👗</span>
+      <div class="niche-name">Fashion & Apparel</div>
+      <div class="niche-tags">
+        <span class="niche-tag-pill">Shirts</span>
+        <span class="niche-tag-pill">Jackets</span>
+        <span class="niche-tag-pill">Dresses</span>
+        <span class="niche-tag-pill">Flat Lay</span>
+        <span class="niche-tag-pill">Ghost MN</span>
+      </div>
+    </div>
+    <div class="niche-card">
+      <span class="niche-emoji">🧢</span>
+      <div class="niche-name">Accessories</div>
+      <div class="niche-tags">
+        <span class="niche-tag-pill">Hats & Caps</span>
+        <span class="niche-tag-pill">Bags</span>
+        <span class="niche-tag-pill">Shoes</span>
+        <span class="niche-tag-pill">Belts</span>
+      </div>
+    </div>
+    <div class="niche-card">
+      <span class="niche-emoji">💍</span>
+      <div class="niche-name">Jewelry</div>
+      <div class="niche-tags">
+        <span class="niche-tag-pill">Rings</span>
+        <span class="niche-tag-pill">Necklaces</span>
+        <span class="niche-tag-pill">Bracelets</span>
+        <span class="niche-tag-pill">White BG</span>
+      </div>
+    </div>
+    <div class="niche-card">
+      <span class="niche-emoji">🔧</span>
+      <div class="niche-name">Automotive Parts</div>
+      <div class="niche-tags">
+        <span class="niche-tag-pill">Spare Parts</span>
+        <span class="niche-tag-pill">Accessories</span>
+        <span class="niche-tag-pill">Remove BG</span>
+        <span class="niche-tag-pill">Bulk</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
@@ -788,59 +329,44 @@ footer {
   <div class="section-title">Transparent Pricing</div>
   <div class="pricing-grid">
     <div class="pricing-card">
-      <div class="pricing-name">E-Commerce Essential</div>
-      <div class="pricing-best">Best for: High-volume marketplace listings</div>
-      <div class="pricing-price">$3.50<sub> / image</sub></div>
+      <div class="pricing-name">Basic Cleanup</div>
+      <div class="pricing-best">Best for: Jewelry & automotive parts</div>
+      <div class="pricing-price">$1.50<sub> / image</sub></div>
       <div class="pricing-divider"></div>
       <ul class="pricing-list">
-        <li>Precision Clipping Path & Background Removal</li>
-        <li>Natural Shadow or Drop Shadow</li>
-        <li>Ghost Mannequin / Neck Joint</li>
-        <li>Basic Dust & Scratch Removal</li>
-        <li>Product Straightening & Sizing</li>
+        <li>Background Removal (Pure White)</li>
+        <li>Dust & Scratch Removal</li>
+        <li>Resize & Crop to Spec</li>
+        <li>Amazon / Shopify Compliant</li>
       </ul>
       <a href="#contact" class="pricing-cta">Get Started</a>
     </div>
     <div class="pricing-card featured">
       <div class="pricing-badge">Most Popular</div>
-      <div class="pricing-name">High-End Premium</div>
-      <div class="pricing-best">Best for: Jewelry, luxury goods & hero images</div>
-      <div class="pricing-price">$4.50<sub> / image</sub></div>
+      <div class="pricing-name">Apparel Retouching</div>
+      <div class="pricing-best">Best for: Fashion, apparel & accessories</div>
+      <div class="pricing-price">$3.00<sub> / image</sub></div>
       <div class="pricing-divider"></div>
       <ul class="pricing-list">
-        <li>Everything in E-Commerce Essential</li>
-        <li>Advanced Color Matching & Correction</li>
-        <li>Texture Enhancement & Fabric Smoothing</li>
-        <li>Metals & Jewelry Polishing</li>
-        <li>Advanced Model / Portrait Retouching</li>
+        <li>Ghost Mannequin / Neck Joint</li>
+        <li>Dust & Scratch Removal</li>
+        <li>Liquify & Shape Refinement</li>
+        <li>Fabric Texture Preservation</li>
+        <li>Color Matching across catalog</li>
       </ul>
       <a href="#contact" class="pricing-cta">Get Started</a>
     </div>
     <div class="pricing-card">
-      <div class="pricing-name">AI Compositing</div>
-      <div class="pricing-best">Best for: Social media, ads & campaigns</div>
-      <div class="pricing-price">Custom<sub> quote</sub></div>
-      <div class="pricing-divider"></div>
-      <ul class="pricing-list">
-        <li>Everything in High-End Premium</li>
-        <li>AI-Powered Background Replacement</li>
-        <li>Advanced Compositing & Manipulation</li>
-        <li>Lifestyle Scene Creation</li>
-        <li>Creative Color Grading</li>
-      </ul>
-      <a href="#contact" class="pricing-cta">Request Quote</a>
-    </div>
-    <div class="pricing-card">
-      <div class="pricing-name">Enterprise</div>
-      <div class="pricing-best">Best for: 500+ images, long-term partnership</div>
+      <div class="pricing-name">Bulk / Enterprise</div>
+      <div class="pricing-best">Best for: 200+ images, recurring orders</div>
       <div class="pricing-price">Let's<sub> talk</sub></div>
       <div class="pricing-divider"></div>
       <ul class="pricing-list">
-        <li>High-Volume Bulk Discounts</li>
-        <li>Dedicated Workflow & Custom Presets</li>
-        <li>Priority Turnaround</li>
-        <li>Brand Style Guide Integration</li>
-        <li>Dedicated Account Support</li>
+        <li>Volume Discount Pricing</li>
+        <li>Dedicated Workflow Setup</li>
+        <li>Custom Style Guide Integration</li>
+        <li>Priority 24H Turnaround</li>
+        <li>Long-Term Partnership Rate</li>
       </ul>
       <a href="#contact" class="pricing-cta">Contact Us</a>
     </div>
@@ -855,22 +381,22 @@ footer {
     <div class="workflow-step">
       <div class="step-num">1</div>
       <div class="step-title">Send Your Files</div>
-      <div class="step-desc">Share your raw images via Google Drive, WeTransfer, or any platform you prefer.</div>
+      <div class="step-desc">Share raw images via Google Drive, WeTransfer, or any platform you prefer.</div>
     </div>
     <div class="workflow-step">
       <div class="step-num">2</div>
       <div class="step-title">Brief & Style</div>
-      <div class="step-desc">Tell us your requirements — platform specs, style references, and turnaround needs.</div>
+      <div class="step-desc">Tell us your specs — platform requirements, style references, turnaround needs.</div>
     </div>
     <div class="workflow-step">
       <div class="step-num">3</div>
       <div class="step-title">We Edit</div>
-      <div class="step-desc">Precision editing delivered within 24–48 hours for standard bulk orders.</div>
+      <div class="step-desc">Clean, consistent editing delivered within 24–48 hours for standard orders.</div>
     </div>
     <div class="workflow-step">
       <div class="step-num">4</div>
       <div class="step-title">Review & Approve</div>
-      <div class="step-desc">Free revisions until you're 100% satisfied. Download and publish.</div>
+      <div class="step-desc">Free revisions until satisfied. Download and publish with confidence.</div>
     </div>
   </div>
 </section>
@@ -879,42 +405,31 @@ footer {
 <section class="about" id="about">
   <div class="about-text">
     <div class="section-tag">Who We Are</div>
-    <div class="section-title">Built for<br>E-Commerce.</div>
-    <p class="about-desc">Club97Studio is a specialized photo editing studio with over 8 years of experience working with e-commerce brands globally. We understand what makes a product image convert — not just look good.</p>
-    <p class="about-desc">From fashion flat lays to luxury jewelry to automotive dealerships, we've built workflows that deliver consistent, high-quality results at scale.</p>
+    <div class="section-title">Specialists.<br>Not Generalists.</div>
+    <p class="about-desc">Club97Studio is a focused e-commerce photo editing studio. We don't try to do everything — we do apparel, fashion, jewelry, and automotive parts editing exceptionally well, at volume, consistently.</p>
+    <p class="about-desc">8 years of real production experience means we understand marketplace standards, brand consistency, and fast turnaround — not just Photoshop tools.</p>
     <div class="about-tags">
       <span class="about-tag">Fashion</span>
+      <span class="about-tag">Apparel</span>
       <span class="about-tag">Jewelry</span>
       <span class="about-tag">Automotive</span>
-      <span class="about-tag">Apparel</span>
       <span class="about-tag">Amazon</span>
       <span class="about-tag">Shopify</span>
+      <span class="about-tag">eBay</span>
     </div>
   </div>
   <div class="about-right">
-    <div class="about-stat">
-      <div class="about-stat-num">8+</div>
-      <div class="about-stat-label">Years of professional editing experience</div>
-    </div>
-    <div class="about-stat">
-      <div class="about-stat-num">90%</div>
-      <div class="about-stat-label">Job Success Score on Upwork</div>
-    </div>
-    <div class="about-stat">
-      <div class="about-stat-num">24H</div>
-      <div class="about-stat-label">Turnaround for standard bulk orders</div>
-    </div>
-    <div class="about-stat">
-      <div class="about-stat-num">0</div>
-      <div class="about-stat-label">Compromises on output quality</div>
-    </div>
+    <div class="about-stat"><div class="about-stat-num">8+</div><div class="about-stat-label">Years of production editing experience</div></div>
+    <div class="about-stat"><div class="about-stat-num">90%</div><div class="about-stat-label">Job Success Score on Upwork</div></div>
+    <div class="about-stat"><div class="about-stat-num">24H</div><div class="about-stat-label">Standard turnaround for bulk orders</div></div>
+    <div class="about-stat"><div class="about-stat-num">68+</div><div class="about-stat-label">Completed projects on Upwork</div></div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-  <h2 class="cta-title">Ready to Elevate<br>Your Product Images?</h2>
-  <p class="cta-desc">Get a free sample edit — no commitment needed. See the quality before you commit.</p>
+  <h2 class="cta-title">Let's Work<br>Together.</h2>
+  <p class="cta-desc">Send 3–5 images for a free sample edit. No commitment, no strings attached.</p>
   <a class="cta-email" href="mailto:club97studio@gmail.com">club97studio@gmail.com</a>
   <div class="cta-buttons">
     <a href="https://www.upwork.com/freelancers/ardia2" class="btn-primary" target="_blank">Hire on Upwork</a>
@@ -925,7 +440,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Club<span>97</span>Studio</div>
-  <div class="footer-copy">© 2025 Club97Studio. All rights reserved.</div>
+  <div class="footer-copy">© 2026 Club97Studio. All rights reserved.</div>
   <div class="footer-links">
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
